@@ -19,3 +19,5 @@ steps:
            '--allow-unauthenticated']
 
 images: ['gcr.io/$PROJECT_ID/my-flask-app:$COMMIT_SHA']
+
+
