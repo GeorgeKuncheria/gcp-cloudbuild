@@ -1,0 +1,20 @@
+steps:
+  # Build the container image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/intellifly-422215/my-flask-app:$COMMIT_SHA', '.']
+  
+  # Push the container image to Container Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/intellifly-422215/my-flask-app:$COMMIT_SHA']
+  
+  # Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    args: ['gcloud', 'run', 'deploy', 'my-flask-app',
+           '--image', 'gcr.io/intellifly-422215/my-flask-app:$COMMIT_SHA',
+           '--platform', 'managed',
+           '--region', 'us-central1',
+           '--port', '8080',
+           '--allow-unauthenticated']
+  
+# Images to store in Container Registry
+images: ['gcr.io/intellifly-422215/my-flask-app:$COMMIT_SHA']
