@@ -5,10 +5,10 @@ serviceAccount: projects/my-app-455020/serviceAccounts/cloudbuild-deployer@my-ap
 
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/my-flask-app:$COMMIT_SHA', '.']
+    args: ['build', '-t', 'gcr.io/my-app-455020/my-flask-app:$COMMIT_SHA', '.']
   
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/$PROJECT_ID/my-flask-app:$COMMIT_SHA']
+    args: ['push', 'gcr.io/my-app-455020/my-flask-app:$COMMIT_SHA']
   
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     args: ['gcloud', 'run', 'deploy', 'my-flask-app',
