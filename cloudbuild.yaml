@@ -12,12 +12,12 @@ steps:
   
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     args: ['gcloud', 'run', 'deploy', 'my-flask-app',
-           '--image', 'gcr.io/$PROJECT_ID/my-flask-app:$COMMIT_SHA',
+           '--image', 'gcr.io/my-app-455020/my-flask-app:$COMMIT_SHA',
            '--platform', 'managed',
            '--region', 'us-central1',
            '--port', '8080',
            '--allow-unauthenticated']
 
-images: ['gcr.io/$PROJECT_ID/my-flask-app:$COMMIT_SHA']
+images: ['gcr.io/my-app-455020/my-flask-app:$COMMIT_SHA']
 
 
