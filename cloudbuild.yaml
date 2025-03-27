@@ -21,3 +21,11 @@ steps:
 images: ['gcr.io/my-app-455020/my-flask-app:$COMMIT_SHA']
 
 
+
+
+
+
+
+
+
+
